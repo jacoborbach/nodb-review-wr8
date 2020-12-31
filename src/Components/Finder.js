@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Grass from './Grass';
 
 //Finder contains the wildPokemon array as data, so that they can be sent to Grass to be displayed.
 //Finder also is passed the catchPokemon function so that it can be passed to Grass to be invoked.
 class Finder extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             wildPokemon: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getWildPokemon();
     }
 
@@ -22,15 +22,15 @@ class Finder extends Component {
         //code here
     }
 
-    render(){
+    render() {
         //Mapping is a great way to reuse components. Here we are mapping over the wildPokemon
         //array, and then sending it to the Grass component to be displayed.
         const mappedPokemon = this.state.wildPokemon.map((pokemon, i) => (
-            <Grass 
+            <Grass
                 key={i}
                 pokemon={pokemon}
                 catchFn={this.props.catchFn}
-                refreshFn={this.getWildPokemon}/>
+                refreshFn={this.getWildPokemon} />
         ))
         return (
             <div className='poke-flex'>
