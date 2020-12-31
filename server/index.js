@@ -6,9 +6,12 @@
 //   app.listen(4444, () => console.log(`Server running on 4444`))
 
 const express = require('express'),
+    grassCtrl = require('./controllers/grassCtrl'),
     app = express(),
     port = 4444;
 
 app.use(express.json());
+
+app.get('/api/wild-pokemon', grassCtrl.getWildPokemon);
 
 app.listen(port, () => console.log(`Your server is running on ${port}`))

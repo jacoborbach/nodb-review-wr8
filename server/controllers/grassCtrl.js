@@ -15,7 +15,17 @@ module.exports = {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${rand1}`)
             //res.data = super important!!!!!
             .then(response => {
-                pokemonArray.push(response.data)
+                pokemonArray.push(response.data);
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${rand2}`)
+                    .then(response => {
+                        pokemonArray.push(response.data);
+                        axios.get(`https://pokeapi.co/api/v2/pokemon/${rand3}`)
+                            .then(response => {
+                                pokemonArray.push(response.data);
+                                res.status(200).send(pokemonArray);
+                            })
+                    })
             })
+            .catch(err => res.status(500).send(err))
     }
 }
