@@ -7,11 +7,17 @@
 
 const express = require('express'),
     grassCtrl = require('./controllers/grassCtrl'),
+    pokeCtrl = require('./controllers/pokemonCtrl'),
     app = express(),
     port = 4444;
 
 app.use(express.json());
 
 app.get('/api/wild-pokemon', grassCtrl.getWildPokemon);
+
+//pokeCtrl endpoints
+//End points can be the same as long as the methods (get, post) are different!
+app.get('/api/caught-pokemon', pokeCtrl.getCaughtPokemon);
+app.post('/api/caught-pokemon', pokeCtrl.catchPokemon);
 
 app.listen(port, () => console.log(`Your server is running on ${port}`))
